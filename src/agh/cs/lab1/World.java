@@ -5,7 +5,6 @@ public class World {
     public static void main(String[] args) {
         out.println("Start");
 
-
         Direction[] direction = new Direction[args.length];
 
         for (int i = 0; i < args.length; i++) {
