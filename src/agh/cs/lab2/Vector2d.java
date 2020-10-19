@@ -17,11 +17,9 @@ public class Vector2d {
         return other.x <= this.x && other.y <= this.y;
     }
     public Vector2d upperRight(Vector2d other){
-        return new Vector2d(Math.max(this.x,other.x),Math.max(this.y,other.y));
+        return new Vector2d()
     }
-    public Vector2d lowerLeft(Vector2d other){}
-        return new Vector2d(Math.min(this.x,other.x),Math.min(this.y,other.y));
-    }
+    Vector2d lowerLeft(Vector2d other)
     Vector2d add(Vector2d other)
     Vector2d subtract(Vector2d other)
     boolean equals(Object other)
