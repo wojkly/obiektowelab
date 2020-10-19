@@ -19,11 +19,24 @@ public class Vector2d {
     public Vector2d upperRight(Vector2d other){
         return new Vector2d(Math.max(this.x,other.x),Math.max(this.y,other.y));
     }
-    public Vector2d lowerLeft(Vector2d other){}
+    public Vector2d lowerLeft(Vector2d other){
         return new Vector2d(Math.min(this.x,other.x),Math.min(this.y,other.y));
     }
-    Vector2d add(Vector2d other)
-    Vector2d subtract(Vector2d other)
-    boolean equals(Object other)
-    Vector2d opposite()
+    public Vector2d add(Vector2d other){
+        return new Vector2d(this.x + other.x, this.y + other.y);
+    }
+    public Vector2d subtract(Vector2d other){
+        return new Vector2d(this.x - other.x, this.y - other.y);
+    }
+    public boolean equals(Object other){
+        if (this == other)
+            return true;
+        if (!(other instanceof Vector2d))
+            return false;
+        Vector2d tmp= (Vector2d) other;
+        return this.x == tmp.x && this.y == tmp.y;
+    }
+    public Vector2d opposite(){
+        return new Vector2d(-this.x, -this.y);
+    }
 }
