@@ -4,17 +4,16 @@ import junit.framework.TestCase;
 import org.junit.Test;
 
 public class Vector2dTest extends TestCase {
-
     @Test
-    public void equalsTest(){
-        assertTrue(new Vector2d(6,-1) == new Vector2d(6,-1));
+    public void testEquals(){
+        assertEquals(new Vector2d(6,-1), new Vector2d(6,-1));
     }
     @Test
-    public void toStringTest(){
-        assertEquals(new Vector2d(2,8).toString(), "(2,8)" );
+    public void testToString(){
+        assertEquals("(2,8)", new  Vector2d(2,8).toString());
     }
     @Test
-    public void precedesTest(){
+    public void testPrecedes(){
         Vector2d u = new Vector2d(1,0);
         Vector2d v = new Vector2d(3,4);
         Vector2d w = new Vector2d(4,2);
@@ -25,7 +24,7 @@ public class Vector2dTest extends TestCase {
         assertFalse(v.precedes(w));
     }
     @Test
-    public void followsTest(){
+    public void testFollows(){
         Vector2d u = new Vector2d(4,4);
         Vector2d v = new Vector2d(3,4);
         Vector2d w = new Vector2d(2,5);
@@ -37,45 +36,45 @@ public class Vector2dTest extends TestCase {
         assertFalse(v.follows(w));
     }
     @Test
-    public void upperRightTest(){
+    public void testUpperRight(){
         Vector2d u = new Vector2d(2,6);
         Vector2d v = new Vector2d(8,5);
         Vector2d w = new Vector2d(8,4);
         Vector2d x = new Vector2d(8,6);
 
-        assertEquals(u.upperRight(v), x);
-        assertEquals(u.upperRight(x), x);
-        assertEquals(v.upperRight(w), v);
+        assertEquals(x, u.upperRight(v));
+        assertEquals(x, u.upperRight(x));
+        assertEquals(v, v.upperRight(w));
     }
     @Test
-    public void lowerLeftTest(){
+    public void testLowerLeft(){
         Vector2d u = new Vector2d(3,5);
         Vector2d v = new Vector2d(7,7);
         Vector2d w = new Vector2d(7,2);
         Vector2d x = new Vector2d(3,2);
 
-        assertEquals(u.lowerLeft(w), x);
-        assertEquals(u.lowerLeft(v), u);
-        assertEquals(x.lowerLeft(v), x);
+        assertEquals(x, u.lowerLeft(w));
+        assertEquals(u, u.lowerLeft(v));
+        assertEquals(x, x.lowerLeft(v));
     }
     @Test
-    public void addTest(){
+    public void testAdd(){
         Vector2d u = new Vector2d(8,4);
         Vector2d v = new Vector2d(-4,1);
         Vector2d w = new Vector2d(4,5);
-        assertEquals(u.upperRight(v), w);
+        assertEquals(w, u.add(v));
     }
     @Test
-    public void subtractTest(){
+    public void testSubtract(){
         Vector2d u = new Vector2d(4,6);
         Vector2d v = new Vector2d(-4,3);
         Vector2d w = new Vector2d(8,3);
-        assertEquals(u.upperRight(v), w);
+        assertEquals(w, u.subtract(v));
     }
     @Test
-    public void oppositeTest(){
+    public void testOpposite(){
         Vector2d u = new Vector2d(4,6);
         Vector2d v = new Vector2d(-4,-6);
-        assertEquals(u.opposite(), v);
+        assertEquals(v, u.opposite());
     }
 }
