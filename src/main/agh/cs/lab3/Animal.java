@@ -1,4 +1,4 @@
-package agh.cs.lab2;
+package agh.cs.lab3;
 
 public class Animal {
     static final int MIN_X = 0;
