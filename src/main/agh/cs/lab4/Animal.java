@@ -23,35 +23,33 @@ public class Animal {
 
     public String toString(){
         switch(this.orientation){
-            case SOUTH -> return "S";
-            case NORTH -> return "N";
-            case WEST -> return "W";
-            case EAST -> return "E";
+            case SOUTH: return "S";
+            case NORTH: return "N";
+            case WEST: return "W";
+            case EAST: return "E";
+            default: return null;
         }
-        return null;
     }
 
     public void move(MoveDirection direction){
+        if(direction.equals(MoveDirection.RIGHT)) {
+            orientation = orientation.next();
+        }else if(direction.equals(MoveDirection.LEFT)) {
+            orientation = orientation.previous();
+        }
+        else if(direction.equals(MoveDirection.FORWARD) || direction.equals(MoveDirection.BACKWARD)) {
 
-        switch(direction){
-            if(direction.equals(MoveDirection.RIGHT)
-                orientation = orientation.next();
-            else if(direction.equals(MoveDirection.LEFT)
-                orientation = orientation.previous();
-            else if(direction.equals(MoveDirection.FORWARD) || direction.equals(MoveDirection.BACKWARD)) {
-
-                Vector2d nextPosition = new Vector2d(position.x, position.y)
-                if (direction.equals(MoveDirection.FORWARD)) {
-                    nextPosition = nextPosition.add(orientation.toUnitVector());
-                } else {
-                    nextPosition = nextPosition.add(orientation.toUnitVector().opposite());
-                }
-                if (this.map.canMoveTo(nextPosition))
-                    position = nextPosition;
-
+            Vector2d nextPosition = new Vector2d(position.x, position.y);
+            if (direction.equals(MoveDirection.FORWARD)) {
+                nextPosition = nextPosition.add(orientation.toUnitVector());
+            } else {
+                nextPosition = nextPosition.add(orientation.toUnitVector().opposite());
             }
+            if (this.map.canMoveTo(nextPosition))
+                position = nextPosition;
         }
     }
+
     public Vector2d getPosition() {
         return position;
     }

@@ -8,16 +8,19 @@ public class SimulationEngine implements agh.cs.lab4.IEngine {
         this.directions = directions;
         this.map = map;
         for(Vector2d initialPosition: positions) {
-            this.map.animalList.add(new Animal(initialPosition));
+            this.map.place(new Animal(this.map, initialPosition));
         }
     }
 
     @Override
     public void run() {
+        int animalsCount = ((RectangularMap)(this.map)).getNumAnimals();
+        int i = 0;
         for(MoveDirection dir: this.directions){
-            for(Animal animal: this.map.animalsList){
-                animal.move(dir);
-            }
+            ( ((RectangularMap)(this.map)) .getAnimalatIdx(i % animalsCount)).move(dir);
+            i += 1;
+//            if (i % animalsCount == 0)
+//                System.out.println( this.map.toString()  );
         }
     }
 }
