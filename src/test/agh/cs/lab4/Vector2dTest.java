@@ -1,6 +1,6 @@
-package agh.cs.lab3;
+package agh.cs.lab4;
 
-import agh.cs.lab3.Vector2d;
+import agh.cs.lab4.Vector2d;
 import junit.framework.TestCase;
 import org.junit.Test;
 

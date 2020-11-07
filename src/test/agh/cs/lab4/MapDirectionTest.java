@@ -1,6 +1,6 @@
-package agh.cs.lab3;
+package agh.cs.lab4;
 
-import agh.cs.lab3.MapDirection;
+import agh.cs.lab4.MapDirection;
 import junit.framework.TestCase;
 import org.junit.Test;
 

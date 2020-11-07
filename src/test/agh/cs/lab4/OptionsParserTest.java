@@ -1,5 +1,7 @@
-package agh.cs.lab3;
+package agh.cs.lab4;
 
+import agh.cs.lab4.MoveDirection;
+import agh.cs.lab4.OptionsParser;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
