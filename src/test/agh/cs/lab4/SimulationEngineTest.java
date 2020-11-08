@@ -24,6 +24,39 @@ class SimulationEngineTest {
         assertEquals("(1,4)", pos0.toString() );
         assertEquals("(2,4)", pos1.toString() );
     }
+
+    @Test
+    void collisionTest2() {
+        String[] d1 = {"f","r","l","f"};
+        String[] d2 = {"l","f","l","b"};
+        String[] d3 = {"r","b","r","b"};
+        String[] data = new String[12];
+        for(int i=0; i < data.length; i += 1){
+            if (i%3 == 0) {
+                data[i] = d1[i / 3];
+            }else if(i%3 == 1) {
+                data[i] = d2[i / 3];
+            }else{
+                data[i] = d3[i / 3];
+            }
+        }
+
+        MoveDirection[] directions = new OptionsParser().parse(data);
+        IWorldMap map = new RectangularMap(10, 10);
+        Vector2d[] positions = { new Vector2d(3,3), new Vector2d(4,4) , new Vector2d(5,5)};
+
+        IEngine engine = new SimulationEngine(directions, map, positions);
+        engine.run();
+
+        Vector2d pos0 = ( ((RectangularMap)(map)) .getAnimalatIdx(0) ).getPosition();
+        Vector2d pos1 = ( ((RectangularMap)(map)) .getAnimalatIdx(1) ).getPosition();
+        Vector2d pos2 = ( ((RectangularMap)(map)) .getAnimalatIdx(2) ).getPosition();
+
+        assertEquals("(3,5)", pos0.toString() );
+        assertEquals("(4,4)", pos1.toString() );
+        assertEquals("(4,6)", pos2.toString() );
+    }
+
     @Test
     void mapBorderTest() {
         String[] d1 = {"f","f","f","l","f"};
