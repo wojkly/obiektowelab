@@ -1,6 +1,4 @@
-package agh.cs.lab4;
-
-import java.util.Objects;
+package agh.cs.lab5;
 
 public class Animal {
     private IWorldMap map;

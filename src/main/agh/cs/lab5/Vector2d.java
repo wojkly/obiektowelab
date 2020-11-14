@@ -1,4 +1,4 @@
-package agh.cs.lab4;
+package agh.cs.lab5;
 
 public class Vector2d {
     public final int x;

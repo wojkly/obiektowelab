@@ -1,0 +1,12 @@
+9.Rozważ dodanie interfejsu IMapElement, który byłby implementowany przez
+klasy Animal oraz Grass. Zastanów się czy można by uprościć implementację
+klasy GrassField wykorzystując ten interfejs.
+
+Klasa Grass zawiera jedynie metody toString oraz getPosision, natomiast
+klasa Animal zawiera o wiele więcej bardziej skomplikowanych metod,
+są to różniące się bardzo obiekty
+dlatego uwżam, że nie ma sensu tego robić.
+
+10. Zastanów się, czy celowe byłoby dodanie klasy AbstractWorldMapElement.
+Uważam że nie ma to podstaw, bo klasy Animal i Grass nie mają ze sobą zbyt
+wiele wspólnego.

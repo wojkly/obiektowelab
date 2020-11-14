@@ -1,6 +1,6 @@
-package agh.cs.lab4;
+package agh.cs.lab5;
 
-public class SimulationEngine implements agh.cs.lab4.IEngine {
+public class SimulationEngine implements IEngine {
     public MoveDirection[] directions;
     public IWorldMap map;
 
@@ -14,10 +14,11 @@ public class SimulationEngine implements agh.cs.lab4.IEngine {
 
     @Override
     public void run() {
-        int animalsCount = ((RectangularMap)(this.map)).getNumAnimals();
+        int animalsCount = ((AbstractWorldMap)(this.map)).getNumAnimals();
         int i = 0;
         for(MoveDirection dir: this.directions){
-            ( ((RectangularMap)(this.map)) .getAnimalatIdx(i % animalsCount)).move(dir);
+            ( ((AbstractWorldMap)(this.map)).getAnimalatIdx(i % animalsCount)).move(dir);
+
             i += 1;
 //            if (i % animalsCount == 0)
 //                System.out.println( this.map.toString()  );
