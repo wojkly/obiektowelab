@@ -1,7 +1,4 @@
-package agh.cs.lab5;
-
-import java.util.ArrayList;
-import java.util.List;
+package agh.cs.lab6;
 
 public class RectangularMap extends AbstractWorldMap{
     private Vector2d lowerLeft = new Vector2d(0,0);
@@ -28,9 +25,7 @@ public class RectangularMap extends AbstractWorldMap{
 
     @Override
     public Object objectAt(Vector2d position) {
-        for(Animal animal: this.animals){
-            if(position.equals(animal.getPosition())) return animal;
-        }
+        if(animals.containsKey(position)) return animals.get(position);
         return null;
     }
 

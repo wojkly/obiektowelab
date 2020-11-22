@@ -1,14 +1,18 @@
-package agh.cs.lab5;
+package agh.cs.lab6;
 
+import agh.cs.lab6.Animal;
+import agh.cs.lab6.IWorldMap;
+import agh.cs.lab6.RectangularMap;
+import agh.cs.lab6.Vector2d;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class GrassFieldTest {
+class RectangularMapTest {
 
     @Test
     void canMoveToTest() {
-        IWorldMap map = new GrassField(10);
+        IWorldMap map = new RectangularMap(10,10);
         map.place(new Animal(map, new Vector2d(3,5)));
         map.place(new Animal(map, new Vector2d(3,8)));
         map.place(new Animal(map, new Vector2d(5,7)));
@@ -21,18 +25,21 @@ class GrassFieldTest {
 
     @Test
     void placeTest() {
-        IWorldMap map = new GrassField(8);
-        map.place(new Animal(map, new Vector2d(2,3)));
-        map.place(new Animal(map, new Vector2d(5,0)));
-        map.place(new Animal(map, new Vector2d(6,2)));
-        map.place(new Animal(map, new Vector2d(5,0)));
+        IWorldMap map = new RectangularMap(8,9);
 
-        assertEquals(3, ((GrassField)(map)).getNumAnimals());
+        map.place(new Animal(map, new Vector2d(6,0)));
+        map.place(new Animal(map, new Vector2d(6,0)));
+        map.place(new Animal(map, new Vector2d(6,1)));
+        map.place(new Animal(map, new Vector2d(6,2)));
+        map.place(new Animal(map, new Vector2d(4,2)));
+        map.place(new Animal(map, new Vector2d(6,1)));
+
+        assertEquals(4, ((RectangularMap)(map)).animals.size());
     }
 
     @Test
     void isOccupiedTest() {
-        IWorldMap map = new GrassField(9);
+        IWorldMap map = new RectangularMap(7,6);
         map.place(new Animal(map, new Vector2d(4,1)));
         map.place(new Animal(map, new Vector2d(3,2)));
         map.place(new Animal(map, new Vector2d(5,5)));
@@ -48,13 +55,15 @@ class GrassFieldTest {
 
     @Test
     void objectAtTest() {
-        IWorldMap map = new GrassField(12);
+        IWorldMap map = new RectangularMap(8,12);
         map.place(new Animal(map, new Vector2d(2,3)));
         map.place(new Animal(map, new Vector2d(5,0)));
         map.place(new Animal(map, new Vector2d(6,2)));
         map.place(new Animal(map, new Vector2d(5,0)));
 
+        assertTrue( null == map.objectAt(new Vector2d(5,2)));
         assertTrue( null != map.objectAt(new Vector2d(6,2)));
         assertTrue( null != map.objectAt(new Vector2d(2,3)));
+        assertTrue( null == map.objectAt(new Vector2d(2,2)));
     }
 }

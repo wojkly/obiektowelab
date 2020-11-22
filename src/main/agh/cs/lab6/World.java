@@ -1,8 +1,8 @@
-package agh.cs.lab5;
+package agh.cs.lab6;
 
 public class World {
     public static void main(String[] args) {
-//        String[] dane = {"f","f","r","l","f","f","l","f","r","b","l","f"};
+////        String[] dane = {"f","f","r","l","f","f","l","f","r","b","l","f"};
         MoveDirection[] directions = new OptionsParser().parse(args);
         IWorldMap map = new GrassField(6);
 //        IWorldMap map = new RectangularMap(10,5);
@@ -12,6 +12,7 @@ public class World {
         engine.run();
         System.out.println("final status:");
         System.out.println( map.toString()  );
+
 
     }
 }

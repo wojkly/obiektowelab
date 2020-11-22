@@ -1,27 +1,31 @@
-package agh.cs.lab5;
+package agh.cs.lab6;
+
+import java.util.ArrayList;
 
 public class SimulationEngine implements IEngine {
     public MoveDirection[] directions;
     public IWorldMap map;
+    private ArrayList<Animal> animalsList = new ArrayList<>();
 
     public SimulationEngine(MoveDirection[] directions, IWorldMap map, Vector2d[] positions){
         this.directions = directions;
         this.map = map;
         for(Vector2d initialPosition: positions) {
-            this.map.place(new Animal(this.map, initialPosition));
+            Animal animal = new Animal(this.map, initialPosition);
+            if( this.map.place(animal) ) this.animalsList.add(animal);
         }
     }
 
     @Override
     public void run() {
-        int animalsCount = ((AbstractWorldMap)(this.map)).getNumAnimals();
         int i = 0;
         for(MoveDirection dir: this.directions){
-            ( ((AbstractWorldMap)(this.map)).getAnimalatIdx(i % animalsCount)).move(dir);
-
+            animalsList.get(i%animalsList.size()).move(dir);
             i += 1;
-//            if (i % animalsCount == 0)
-//                System.out.println( this.map.toString()  );
+
+            //simulation after every animal has moved once
+            if (i % animalsList.size() == 0)
+                System.out.println( this.map.toString()  );
         }
     }
 }

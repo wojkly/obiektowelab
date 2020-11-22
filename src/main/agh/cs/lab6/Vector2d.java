@@ -1,4 +1,6 @@
-package agh.cs.lab5;
+package agh.cs.lab6;
+
+import java.util.Objects;
 
 public class Vector2d {
     public final int x;
@@ -6,6 +8,10 @@ public class Vector2d {
     public Vector2d(int x, int y) {
         this.x = x;
         this.y = y;
+    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.x, this.y);
     }
     public String toString() {
         return "(" + this.x + "," + this.y + ")";

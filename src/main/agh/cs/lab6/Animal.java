@@ -1,10 +1,14 @@
-package agh.cs.lab5;
+package agh.cs.lab6;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Animal {
     private IWorldMap map;
     private Vector2d initialPosition;
     private MapDirection orientation;
     private Vector2d position;
+    private ArrayList<IPositionChangeObserver> observers = new ArrayList<>();
 
     public Animal(IWorldMap map){
         this.map = map;
@@ -28,8 +32,22 @@ public class Animal {
             default: return null;
         }
     }
+    //observers
+    public void addObserver(IPositionChangeObserver observer){
+        observers.add(observer);
+    }
+    public void removeObserver(IPositionChangeObserver observer){
+        observers.remove(observer);
+    }
 
+    public void positionChanged(Vector2d oldPosition, Vector2d newPosition){
+        for(IPositionChangeObserver observer: observers){
+            observer.positionChanged(oldPosition,newPosition);
+        }
+    }
+    //
     public void move(MoveDirection direction){
+        Vector2d oldPosition = position;
         if(direction.equals(MoveDirection.RIGHT)) {
             orientation = orientation.next();
         }else if(direction.equals(MoveDirection.LEFT)) {
@@ -45,6 +63,7 @@ public class Animal {
             }
             if (this.map.canMoveTo(nextPosition))
                 position = nextPosition;
+                positionChanged(oldPosition,position);
         }
     }
 
