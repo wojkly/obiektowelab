@@ -47,7 +47,7 @@ public class Animal {
     }
     //
     public void move(MoveDirection direction){
-        Vector2d oldPosition = position;
+        Vector2d oldPosition = new Vector2d(position.x, position.y);
         if(direction.equals(MoveDirection.RIGHT)) {
             orientation = orientation.next();
         }else if(direction.equals(MoveDirection.LEFT)) {

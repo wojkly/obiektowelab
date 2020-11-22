@@ -18,7 +18,7 @@ abstract public class AbstractWorldMap implements IWorldMap, IPositionChangeObse
         Object object = objectAt(oldPosition);
 
         if (object instanceof Animal) {
-            animals.remove(((Animal) object).getPosition());
+            animals.remove(oldPosition);
             animals.put(newPosition, (Animal) object);
         }
     }
