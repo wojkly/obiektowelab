@@ -8,7 +8,7 @@ public class GrassField extends AbstractWorldMap{
 
     public GrassField(int grassNumber){
         this.grassNum = grassNumber;
-        this.mapBoundary = new MapBoundary(this);
+        this.mapBoundary = new MapBoundary();
         placeGrass();
     }
 
